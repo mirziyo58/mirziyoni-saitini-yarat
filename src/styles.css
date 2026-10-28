@@ -1,0 +1,171 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 2px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-rose: var(--rose);
+  --color-ivory: var(--ivory);
+  --color-burgundy: var(--burgundy);
+  --color-charcoal: var(--charcoal);
+  --color-overlay: var(--overlay);
+}
+
+:root {
+  --radius: 0.25rem;
+  --ivory: oklch(0.968 0.011 67);
+  --rose: oklch(0.76 0.07 10);
+  --burgundy: oklch(0.21 0.04 350);
+  --gold: oklch(0.73 0.085 78);
+  --charcoal: oklch(0.18 0.01 330);
+  --overlay: oklch(0.15 0.03 350 / 0.55);
+
+  --background: var(--ivory);
+  --foreground: oklch(0.24 0.03 350);
+  --card: oklch(0.985 0.008 67);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--burgundy);
+  --primary-foreground: var(--ivory);
+  --secondary: oklch(0.93 0.02 20);
+  --secondary-foreground: var(--burgundy);
+  --muted: oklch(0.93 0.015 60);
+  --muted-foreground: oklch(0.45 0.03 350);
+  --accent: var(--gold);
+  --accent-foreground: var(--burgundy);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.73 0.085 78 / 0.35);
+  --input: oklch(0.73 0.085 78 / 0.45);
+  --ring: var(--gold);
+}
+
+.studio {
+  --background: var(--charcoal);
+  --foreground: oklch(0.94 0.02 70);
+  --card: oklch(0.23 0.04 350 / 0.6);
+  --card-foreground: var(--foreground);
+  --popover: var(--burgundy);
+  --popover-foreground: var(--foreground);
+  --primary: var(--gold);
+  --primary-foreground: var(--charcoal);
+  --secondary: var(--burgundy);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.25 0.03 350);
+  --muted-foreground: oklch(0.72 0.03 60);
+  --border: oklch(0.73 0.085 78 / 0.22);
+  --input: oklch(0.73 0.085 78 / 0.3);
+  background:
+    radial-gradient(60rem 40rem at 80% -10%, oklch(0.3 0.08 355 / 0.7), transparent 60%),
+    radial-gradient(50rem 30rem at -10% 40%, oklch(0.26 0.06 350 / 0.6), transparent 60%),
+    var(--charcoal);
+  color: var(--foreground);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+@utility display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  line-height: 0.95;
+  font-weight: 300;
+}
+@utility section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.05;
+  font-weight: 300;
+}
+@utility glass {
+  background: oklch(0.98 0.01 67 / 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid oklch(0.73 0.085 78 / 0.45);
+}
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+@utility gold-text {
+  background: linear-gradient(120deg, oklch(0.82 0.08 85), var(--gold), oklch(0.62 0.09 60));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility shadow-soft {
+  box-shadow: 0 30px 60px -30px oklch(0.21 0.04 350 / 0.35);
+}
+@utility glow-gold {
+  box-shadow: 0 0 0 1px oklch(0.73 0.085 78 / 0.3), 0 20px 60px -20px oklch(0.73 0.085 78 / 0.35);
+}
+@utility safe-bottom {
+  bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@keyframes kenburns { from { transform: scale(1.05); } to { transform: scale(1.18) translate(-1%, -1%); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes shimmer { 0%,100% { opacity: .4 } 50% { opacity: 1 } }
+@keyframes eq { 0%,100% { transform: scaleY(.3) } 50% { transform: scaleY(1) } }
+@keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+
+@utility animate-kenburns { animation: kenburns 24s ease-in-out infinite alternate; }
+@utility animate-fade-up { animation: fadeUp 1.2s cubic-bezier(.2,.7,.2,1) both; }
+@utility animate-shimmer { animation: shimmer 3s ease-in-out infinite; }
+@utility animate-eq { animation: eq 0.9s ease-in-out infinite; transform-origin: bottom; }
+@utility animate-floaty { animation: floaty 6s ease-in-out infinite; }
+
+.reveal { opacity: 0; transform: translateY(28px); filter: blur(4px); transition: opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1), filter 1s ease; }
+.reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+}
